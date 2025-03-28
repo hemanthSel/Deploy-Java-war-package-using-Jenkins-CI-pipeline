@@ -62,8 +62,9 @@ pipeline {
                     //  sh "groups"
                      // sh "sudo chmod 777 /var/run/docker.sock"
                  withDockerRegistry(credentialsId: 'dockerID', toolName: 'docker') {
-                    sh "docker build -t java-one ."
-                    sh 'docker images'
+                    sh "sudo pwd"
+                    sh "sudo docker build -t java-one ."
+                    sh 'sudo docker images'
                  }
                  echo "End of Docker Images"
                 }
