@@ -75,7 +75,7 @@ pipeline {
                 script {
                     echo "Tag & Push to DockerHub Started..."
                     withDockerRegistry(credentialsId: 'dockerID', toolName: 'docker') {
-                      sh "docker tag devops-one hemanth509/java-one:V1.001"
+                      sh "docker tag java-one hemanth509/java-one:V1.001"
                       sh "docker push hemanth509/java-one:V1.001"
                       sh 'docker images'
                     }
