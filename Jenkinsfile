@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                 git branch: 'master', url: 'https://github.com/hemanthSel/springit'
+                 git branch: 'main', url: 'https://github.com/hemanthSel/springit'
             }
         }
 
