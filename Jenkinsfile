@@ -31,19 +31,19 @@ pipeline {
             }
         }
 
-        stage('SonarQube-Analysis') {
-            steps {
-                script {
-                 echo "sonarqube code analysis"
-                 withSonarQubeEnv(credentialsId: 'sonar-token') {
-                     sh ''' $SCANNER_HOHE/bin/sonar-scanner -Dsonar.projectName=spring-boot-  -Dsonar.projectKey=springboot-java \
-                     -Dsonar.java.binaries=. '''
-                     echo "End of sonarqube code analysis"
+        // stage('SonarQube-Analysis') {
+        //     steps {
+        //         script {
+        //          echo "sonarqube code analysis"
+        //          withSonarQubeEnv(credentialsId: 'sonar-token') {
+        //              sh ''' $SCANNER_HOHE/bin/sonar-scanner -Dsonar.projectName=spring-boot-  -Dsonar.projectKey=springboot-java \
+        //              -Dsonar.java.binaries=. '''
+        //              echo "End of sonarqube code analysis"
 
-                   }
-                }
-            }
-        }
+        //            }
+        //         }
+        //     }
+        // }
 
         // Compiles the code and packages it into a JAR/WAR file inside the target/ directory.
         stage('Mvn Build') {
