@@ -31,20 +31,6 @@ pipeline {
             }
         }
 
-        // stage('SonarQube-Analysis') {
-        //     steps {
-        //         script {
-        //          echo "sonarqube code analysis"
-        //          withSonarQubeEnv(credentialsId: 'sonar-token') {
-        //              sh ''' $SCANNER_HOHE/bin/sonar-scanner -Dsonar.projectName=spring-boot-  -Dsonar.projectKey=springboot-java \
-        //              -Dsonar.java.binaries=. '''
-        //              echo "End of sonarqube code analysis"
-
-        //            }
-        //         }
-        //     }
-        // }
-
         // Compiles the code and packages it into a JAR/WAR file inside the target/ directory.
         stage('Mvn Build') {
             steps {
@@ -57,10 +43,6 @@ pipeline {
             steps {
                 script {
                  echo "Docker Image started..."
-                    // sh "sudo usermod -aG docker $USER"
-                    //  sh "newgrp docker"
-                    //  sh "groups"
-                     // sh "sudo chmod 777 /var/run/docker.sock"
                  withDockerRegistry(credentialsId: 'dockerID', toolName: 'docker') {
                     sh "docker build -t java-one ."
                     sh "docker images"
@@ -98,3 +80,17 @@ pipeline {
 
     }
 }
+
+        // stage('SonarQube-Analysis') {
+        //     steps {
+        //         script {
+        //          echo "sonarqube code analysis"
+        //          withSonarQubeEnv(credentialsId: 'sonar-token') {
+        //              sh ''' $SCANNER_HOHE/bin/sonar-scanner -Dsonar.projectName=spring-boot-  -Dsonar.projectKey=springboot-java \
+        //              -Dsonar.java.binaries=. '''
+        //              echo "End of sonarqube code analysis"
+
+        //            }
+        //         }
+        //     }
+        // }
